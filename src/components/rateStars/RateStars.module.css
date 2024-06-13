@@ -1,15 +1,13 @@
 .container {
     display: flex;
-    align-items: center;
-    justify-content: center;
     width: 270px;
     height: 42px;
     top: 92px;
     left: -376px;
     gap: 0px;
     opacity: 0px;
-    margin-bottom: 20px;
     cursor: pointer;
+    margin-bottom: 15px;
 }  
 
 
