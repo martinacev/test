@@ -1,4 +1,4 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import classes from "./RateStars.module.css";
 
 const RateStars = () => {
@@ -14,18 +14,15 @@ const RateStars = () => {
   const handleClick = (index) => {
     const newClickedStars = [...clickedStars];
 
-   
     newClickedStars[index] = !newClickedStars[index];
 
-    
-    if (index === 3) {
-      for (let i = 0; i <= index; i++) {
-        newClickedStars[i] = true;
-      }
+    for (let i = 0; i <= index; i++) {
+      newClickedStars[i] = true;
     }
-
     setClickedStars(newClickedStars);
   };
+
+  
 
   const handleMouseEnter = () => {
     const newClickedStars = [...clickedStars].fill(false);
