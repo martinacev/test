@@ -1,17 +1,35 @@
-import { useState } from "react";
+import  { useState, useEffect } from "react";
 import classes from "./RateStars.module.css";
 
 const RateStars = () => {
-  const [clickedStars, setClickedStars] = useState(new Array(5).fill(false));
+  const [clickedStars, setClickedStars] = useState(() => {
+    const storedStars = JSON.parse(localStorage.getItem("clickedStars"));
+    return storedStars || new Array(5).fill(false);
+  });
+
+  useEffect(() => {
+    localStorage.setItem("clickedStars", JSON.stringify(clickedStars));
+  }, [clickedStars]);
 
   const handleClick = (index) => {
     const newClickedStars = [...clickedStars];
 
+   
     newClickedStars[index] = !newClickedStars[index];
 
-    for (let i = 0; i <= index; i++) {
-      newClickedStars[i] = true;
+    
+    if (index === 3) {
+      for (let i = 0; i <= index; i++) {
+        newClickedStars[i] = true;
+      }
     }
+
+    setClickedStars(newClickedStars);
+  };
+
+  const handleMouseEnter = () => {
+    const newClickedStars = [...clickedStars].fill(false);
+
     setClickedStars(newClickedStars);
   };
 
@@ -24,6 +42,7 @@ const RateStars = () => {
           key={starId}
           fill={clickedStars[index] ? "gold" : "grey"}
           onClick={() => handleClick(index)}
+          onMouseEnter={() => handleMouseEnter(index)}
           style={{ cursor: "pointer" }}
           viewBox="0 0 60 45"
         >
