@@ -30,12 +30,6 @@ const RateStars = () => {
 		setClickedStars(newClickedStars);
 	};
 
-	const handleMouseEnter = () => {
-		const newClickedStars = [...clickedStars].fill(0);
-
-		setClickedStars(newClickedStars);
-	};
-
 	const stars = [1, 2, 3, 4, 5];
 
 	return (
