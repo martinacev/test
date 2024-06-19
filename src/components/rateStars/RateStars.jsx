@@ -11,19 +11,19 @@ const RateStars = () => {
 		localStorage.setItem("clickedStars", JSON.stringify(clickedStars));
 	}, [clickedStars]);
 
-	const handleClick = (id, isHalf) => {
+	const handleClick = (index, isHalf) => {
 		const newClickedStars = [...clickedStars];
 
 		if (isHalf) {
-			newClickedStars[id] = newClickedStars[id] === 0.5 ? 1 : 0.5;
+			newClickedStars[index] = newClickedStars[index] === 0.5 ? 1 : 0.5;
 		} else {
-			newClickedStars[id] = newClickedStars[id] === 1 ? 0.5 : 1;
+			newClickedStars[index] = newClickedStars[index] === 1 ? 0.5 : 1;
 		}
 
-		for (let i = 0; i < id; i++) {
+		for (let i = 0; i < index; i++) {
 			newClickedStars[i] = 1;
 		}
-		for (let i = id + 1; i < newClickedStars.length; i++) {
+		for (let i = index + 1; i < newClickedStars.length; i++) {
 			newClickedStars[i] = 0;
 		}
 
@@ -54,19 +54,19 @@ const RateStars = () => {
 					</linearGradient>
 				</defs>
 			</svg>
-			{stars.map((starId, id) => (
+			{stars.map((starId, index) => (
 				<div
 					key={starId}
 					className={`${classes.star} ${
-						clickedStars[id] === 1
+						clickedStars[index] === 1
 							? classes.full
-							: clickedStars[id] === 0.5
+							: clickedStars[index] === 0.5
 							? classes.half
 							: ""
 					}`}
 					onClick={(e) =>
 						handleClick(
-							id,
+							index,
 							e.nativeEvent.offsetX <
 								e.currentTarget.clientWidth / 2
 						)
