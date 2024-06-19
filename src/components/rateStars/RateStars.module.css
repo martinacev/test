@@ -2,10 +2,31 @@
     display: flex;
     width: 270px;
     height: 42px;
-    top: 92px;
-    left: -376px;
     gap: 0px;
-    opacity: 0px;
     cursor: pointer;
     margin-bottom: 15px;
-}  
+  }
+  
+  .star {
+    width: 54px; 
+    height: 42px;
+    position: relative;
+  }
+  
+  .star svg {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .star svg path {
+    fill: grey;
+  }
+  
+  .star.full svg path {
+    fill: gold;
+  }
+  
+  .star.half svg path {
+    fill: url(#halfGradient);
+  }
+  
